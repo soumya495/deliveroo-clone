@@ -1,4 +1,4 @@
-import { View, Text, Image, TextInput } from "react-native";
+import { View, Text, Image, TextInput, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -8,6 +8,8 @@ import {
   SearchIcon,
   AdjustmentsIcon,
 } from "react-native-heroicons/outline";
+import Categories from "../components/Categories";
+import FeaturedRow from "../components/FeaturedRow";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -19,8 +21,8 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="p-3 px-4 bg-white">
-      <View className="flex-row justify-between items-center">
+    <SafeAreaView className="bg-white">
+      <View className="flex-row justify-between items-center px-3 pt-3">
         <View className="flex-row items-center space-x-2">
           <Image
             source={{
@@ -41,16 +43,45 @@ const HomeScreen = () => {
         <UserIcon size={35} color="#00CCBB" />
       </View>
       {/* SEARCH */}
-      <View className="flex-row my-2 mt-3 items-center space-x-2">
+      <View className="flex-row my-2 mt-3 items-center space-x-2 px-3 pb-3">
         <View className="bg-gray-200 space-x-2 flex-1 p-2 rounded-md flex-row items-center">
           <SearchIcon size={20} color="gray" />
           <TextInput
+            className="w-full"
             placeholder="Restaurants and Cuisines"
             keyboardType="default"
           />
         </View>
         <AdjustmentsIcon size={35} color="#00CCBB" />
       </View>
+      {/* Scrollable Container */}
+      <ScrollView
+        className="bg-gray-100"
+        contentContainerStyle={{
+          paddingBottom: 100,
+        }}
+      >
+        {/* Categories */}
+        <Categories />
+        {/* Featured */}
+        <FeaturedRow
+          id={1}
+          title="Featured"
+          description="Paid discounts from your partners"
+        />
+        {/* Discounts */}
+        <FeaturedRow
+          id={2}
+          title="Tasty Discounts"
+          description="Everyone's been enjoying these juicy discounts"
+        />
+        {/* Offers */}
+        <FeaturedRow
+          id={3}
+          title="Offers near you!"
+          description="Why not support your local restaurants tonight!"
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };
