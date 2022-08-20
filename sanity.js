@@ -1,8 +1,9 @@
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import envs from "./config/env";
 
 const client = sanityClient({
-  projectId: process.env.REACT_APP_PROJECT_ID,
+  projectId: envs,
   dataset: "production",
   useCdn: true,
   apiVersion: "2021-10-21",
