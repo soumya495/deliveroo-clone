@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import { StarIcon } from "react-native-heroicons/solid";
 import { LocationMarkerIcon } from "react-native-heroicons/outline";
+import { urlFor } from "../sanity";
 
 const RestaurantCard = ({
   id,
@@ -18,7 +19,7 @@ const RestaurantCard = ({
     <TouchableOpacity className="overflow-hidden bg-white mr-3">
       <Image
         source={{
-          uri: imgUrl,
+          uri: urlFor(imgUrl).url(),
         }}
         className="w-64 h-32 rounded-t-md"
       />
@@ -32,7 +33,9 @@ const RestaurantCard = ({
         </View>
         <View className="flex-row items-center space-x-1">
           <LocationMarkerIcon size={25} color="gray" opacity={0.4} />
-          <Text className="text-gray-500">Nearby · {genre}</Text>
+          <Text className="text-gray-500">
+            Nearby · {address.slice(0, 15) + `${address.length > 15 && "..."}`}
+          </Text>
         </View>
       </View>
     </TouchableOpacity>
