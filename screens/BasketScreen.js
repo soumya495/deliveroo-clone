@@ -21,7 +21,7 @@ const BasketScreen = () => {
   const subtotal = useSelector(getTotalBill);
   const [groupedDishes, setGroupedDishes] = useState([]);
 
-  console.log("basket dishes", dishes);
+  // console.log("basket dishes", dishes);
 
   useEffect(() => {
     let groupDishes = {};
@@ -35,7 +35,7 @@ const BasketScreen = () => {
     setGroupedDishes(groupDishes);
   }, [dishes]);
 
-  console.log("basket grouped dishes", groupedDishes);
+  // console.log("basket grouped dishes", groupedDishes);
 
   return (
     <SafeAreaView className="flex-1 bg-white">
