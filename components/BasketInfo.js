@@ -10,8 +10,13 @@ const BasketInfo = () => {
   const dishesInBasket = useSelector(selectBasketItems);
   const totalBill = useSelector(getTotalBill);
 
+  if (dishesInBasket.length === 0) return null;
+
   return (
-    <TouchableOpacity className="absolute bottom-7 w-full flex-row justify-center">
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Basket")}
+      className="absolute bottom-7 w-full flex-row justify-center"
+    >
       <View className="w-11/12 bg-[#00CCBB] flex-row p-4 rounded-lg items-center justify-between">
         <View className="bg-[#20aea3] p-2 px-4 rounded-md">
           <Text className="text-xl font-bold text-white">
